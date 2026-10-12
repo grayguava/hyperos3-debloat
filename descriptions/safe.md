@@ -1,0 +1,103 @@
+# Safe profile
+
+Detail file for `lists/safe.txt` (33 packages). No replacement app needed and no known feature tradeoff. All entries were removed for user 0 and confirmed absent on 2026-10-12.
+
+- MIUI Analytics
+  - `com.miui.analytics`
+  - Xiaomi usage/telemetry collector.
+- Xiaomi Joyose
+  - `com.xiaomi.joyose`
+  - Game/performance telemetry service.
+- Mi Pay (payment SDK)
+  - `com.xiaomi.payment`
+  - Mi Pay payment SDK.
+- MIUI Yellow Page
+  - `com.miui.yellowpage`
+  - Business-number lookup directory.
+- Xiaomi Discover feed
+  - `com.xiaomi.discover`
+  - Content/discovery feed.
+- Xiaomi Barrage
+  - `com.xiaomi.barrage`
+  - Overlay bullet-comment service.
+- MIUI Phrase
+  - `com.miui.phrase`
+  - Predictive-text phrase provider.
+- MIUI Compass
+  - `com.miui.compass`
+  - Compass app.
+- MiSight telemetry
+  - `com.miui.misightservice`
+  - Crash/diagnostic telemetry.
+- MIUI QR scanner
+  - `com.miui.qr`
+  - Standalone QR scanner.
+- FM Radio service
+  - `com.miui.fmservice`
+  - FM radio background service.
+- FM Radio app
+  - `com.miui.fm`
+  - FM radio UI. Only matters with FM hardware/use.
+- Downloads UI (MIUI variant)
+  - `com.android.providers.downloads.ui`
+  - MIUI downloads UI. `com.android.providers.downloads` itself stays.
+- Mi App Finder
+  - `com.mi.appfinder`
+  - Launcher app-search provider.
+- Facebook App Manager
+  - `com.facebook.appmanager`
+  - Preinstalled Facebook updater/manager.
+- Facebook Services
+  - `com.facebook.services`
+  - Preinstalled Facebook background services.
+- Facebook System
+  - `com.facebook.system`
+  - Preinstalled Facebook system component.
+- Google Docs
+  - `com.google.android.apps.docs`
+  - Standalone docs app, no dependencies.
+- Google One
+  - `com.google.android.apps.subscriptions.red`
+  - Google One membership app.
+- Google TV
+  - `com.google.android.videos`
+  - Google TV / Play Movies app.
+- Google Meet
+  - `com.google.android.apps.tachyon`
+  - Video-meetings app.
+- Google Photos
+  - `com.google.android.apps.photos`
+  - Photos backup/gallery app.
+- YouTube
+  - `com.google.android.youtube`
+  - YouTube app.
+- YouTube Music
+  - `com.google.android.apps.youtube.music`
+  - Music streaming app.
+- Google Gemini
+  - `com.google.android.apps.bard`
+  - Gemini AI app (formerly Bard).
+- Google Chrome
+  - `com.android.chrome`
+  - Browser. Cromite (`org.cromite.cromite`) is the replacement here.
+- Privacy Sandbox API
+  - `com.google.android.adservices.api`
+  - Ad Services API surface.
+- Ad Services module
+  - `com.google.mainline.adservices`
+  - Mainline ad-services module.
+- On-device Personalization
+  - `com.google.android.ondevicepersonalization.services`
+  - Ad-targeting personalization service.
+- Location History
+  - `com.google.android.gms.location.history`
+  - Google location-history component.
+- Federated Compute
+  - `com.google.android.federatedcompute`
+  - Background ML/telemetry compute.
+- Print recommendation
+  - `com.google.android.printservice.recommendation`
+  - Print-service suggestion plugin.
+- Google Play Games
+  - `com.google.android.play.games`
+  - Games hub/achievements app.

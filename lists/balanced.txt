@@ -41,3 +41,4 @@ com.google.android.projection.gearhead
 com.miui.bugreport
 com.miui.player
 com.xiaomi.mipicks
+com.google.android.apps.maps

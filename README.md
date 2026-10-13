@@ -1,4 +1,4 @@
-# Debloat HyperOS 3 Phones with Android Debug Bridge (ADB)
+# Debloat HyperOS 3 phones with Android Debug Bridge (ADB)
 
 This repository contains [Android Debug Bridge (ADB)](https://developer.android.com/studio/command-line/adb) lists to remove bloatware from HyperOS Android. Debloating helps remove unwanted system apps to improve performance, battery life, and privacy.
 
@@ -6,13 +6,13 @@ Tested on one phone only: **Xiaomi POCO, HyperOS 3.0.303.0, Android 16** — Thi
 
 The lists are categorized into three different profiles:
 *   **Safe:** Removes only non-essential bloatware, telemetry and standalone apps with no feature tradeoff (33 packages in `lists/safe.txt`). Very low risk of causing issues.
-*   **Balanced:** A superset of Safe (43 packages in `lists/balanced.txt`). Aims for a good balance between debloating and retaining features. Some apps you might use could be removed — each extra entry needs a replacement app or trades a feature (Google Search, Hey Google, Android Auto, Mi Music, GetApps).
-*   **Agressive:** A superset of Balanced (51 packages in `lists/agressive.txt`). Adds the eight highest-tradeoff entries: the dialer/SMS swap, Find Device, Personal Safety and the Mi Cloud stack. Only for users who accept those losses.
+*   **Balanced:** A superset of Safe (44 packages in `lists/balanced.txt`). Aims for a good balance between debloating and retaining features. Some apps you might use could be removed — each extra entry needs a replacement app or trades a feature (Google Search, Hey Google, Android Auto, Mi Music, GetApps, Google Maps).
+*   **Agressive:** A superset of Balanced (53 packages in `lists/agressive.txt`). Adds the nine highest-tradeoff entries: the dialer/SMS swap, Find Device, Personal Safety, the Mi Cloud stack and Theme Manager. Only for users who accept those losses.
 
 Each list is one package name per line. Details for every package (name + description) live in the matching file under `descriptions/` (`safe.md`, `balanced.md`, `agressive.md`).
 
 > [!WARNING]  
-> **USE AT YOUR OWN RISK!** While these commands are generally safe and reversible, debloating can have unintended consequences. It might break system functionalities or cause instability. Always back up your important data before proceeding. It's highly recommended to read through the `descriptions/` file for your chosen profile first and drop any apps you want to keep. Removing Find Device (Agressive) trades away theft protection, and removing Personal Safety (Agressive) trades away emergency SOS/crash detection.
+> **USE AT YOUR OWN RISK!** While these commands are generally safe and reversible, debloating can have unintended consequences. It might break system functionalities or cause instability. Always back up your important data before proceeding. It's highly recommended to read through the `descriptions/` file for your chosen profile first and drop any apps you want to keep.
 
 ---
 
@@ -34,9 +34,10 @@ Each list is one package name per line. Details for every package (name + descri
 
 ---
 
+> [!TIP]
+> It is **highly recommended** that you install the replacement apps and set them up before debloating. Also review the matching details file first ([descriptions/safe.md](descriptions/safe.md), [descriptions/balanced.md](descriptions/balanced.md), [descriptions/agressive.md](descriptions/agressive.md)).
+
 ## Instructions
-Search for a Minimal ADB installer : https://xdaforums.com/t/tool-minimal-adb-and-fastboot-2-9-18.2317790/
-Further reading on ADB can be found here: https://developer.android.com/studio/command-line/adb#Enabling.
 
 1.  **Connect your phone** to your computer with USB debugging enabled.
 
@@ -51,7 +52,7 @@ Further reading on ADB can be found here: https://developer.android.com/studio/c
     adb shell
     ```
 
-4.  **Choose and run a debloat profile.** Select one of the files (`lists/safe.txt`, `lists/balanced.txt`, `lists/agressive.txt`). It is **highly recommended** to review the matching details file first (`descriptions/safe.md`, `descriptions/balanced.md`, `descriptions/agressive.md`).
+4.  **Choose and run a debloat profile.** Select one of the files (safe.txt/balanced.txt/agressive.txt).
 
 5.  Run the package names in the list through ADB. From the repo folder on your computer (PowerShell):
     ```powershell
@@ -61,18 +62,18 @@ Further reading on ADB can be found here: https://developer.android.com/studio/c
     ```shell
     pm uninstall --user 0 com.miui.analytics
     ```
-    Start with the Safe profile. Only move to Balanced after reading the tradeoff notes for its 10 extra entries, and to Agressive after reading the 8 highest-tradeoff entries.
+    Start with the Safe profile. Only move to Balanced after reading the tradeoff notes for its 11 extra entries, and to Agressive after reading the 9 highest-tradeoff entries.
 
 ---
 
-## Useful Commands
+## Useful commands
 
-### Understanding the Debloat Commands
+### Understanding the debloat commands
 
 This repository uses the `pm uninstall` command, which removes the application for the current user (`user 0`).
 
 *   `pm uninstall -k --user 0 <package_name>`
-    *   This command uninstalls the app for the current user (`user 0`). The `-k` flag keeps the app's data and cache. This makes the uninstallation reversible. This is the recommended and safest method. (The original run on this device mostly omitted `-k`; either form removes the app for user 0.)
+    *   This command uninstalls the app for the current user (`user 0`). The `-k` flag keeps the app's data and cache. This makes the uninstallation reversible. This is the recommended and safest method.
 
 *   `pm disable-user --user 0 <package_name>`
     *   This command disables the app for the current user. The app is not removed, just disabled. It's a less aggressive alternative to uninstalling.
@@ -80,7 +81,7 @@ This repository uses the `pm uninstall` command, which removes the application f
 *   `cmd package uninstall --user 0 <package_name>`
     *   This is another way to uninstall a package. In some cases, it can be more "permanent" but is still generally reversible.
 
-### How to Find a Package Name
+### How to find a package name
 
 To find the package name of an app you want to remove, you can use the following command from within the `adb shell`:
 
@@ -89,7 +90,7 @@ pm list packages | grep '<query>'
 ```
 Replace `<query>` with a part of the app's name (e.g., to find the music player, you could use `grep 'player'`). To see packages already removed for the user, run `pm list packages -u`.
 
-### How to Restore a Removed App
+### How to restore a removed app
 
 If you accidentally removed an app you need, you can reinstall it with the following command from your computer's terminal:
 
@@ -103,40 +104,10 @@ adb shell pm install-existing --user 0 com.google.android.projection.gearhead
 
 ---
 
-## Troubleshooting & Common Fixes
+## Troubleshooting & common fixes
 
-If you use the balanced or agressive debloat lists, some features might break. Here are some common fixes to restore essential functionalities by running these commands from your computer's terminal.
+If something breaks after debloating, see [troubleshooting.md](troubleshooting.md) for restore commands (Android Auto, Bluetooth, OTA updates, Theme Manager, dialer/SMS, Hey Google).
 
-*   **To fix Android Auto issues (Balanced removes it):**
-    ```shell
-    adb shell pm install-existing --user 0 com.google.android.projection.gearhead
-    ```
-
-*   **To fix Bluetooth functionality (Balanced removes the Service Center app):**
-    ```shell
-    adb shell pm install-existing --user 0 com.miui.miservice
-    adb shell pm install-existing --user 0 com.xiaomi.bluetooth
-    ```
-
-*   **To re-enable OTA Updates (Agressive removes Mi Cloud packages):**
-    ```shell
-    adb shell pm install-existing --user 0 com.miui.cloudservice
-    adb shell pm install-existing --user 0 com.xiaomi.micloud.sdk
-    adb shell pm install-existing --user 0 com.miui.micloudsync
-    adb shell pm install-existing --user 0 com.miui.cloudbackup
-    ```
-    Then reboot and check for updates in Settings.
-
-*   **To restore UI customization (Theme Manager was removed, broke theming, and was reinstalled — keep it):**
-    ```shell
-    adb shell pm install-existing --user 0 com.android.thememanager
-    ```
-
-*   **Dialer/SMS show issues after Agressive:** it removes the AOSP dialer/SMS in favor of Google Dialer + Google Messages. Confirm Google Messages holds the SMS role and Google Dialer handles calls; if not, reinstall the stock apps or re-check default-app settings.
-
-*   **Hey Google stopped working:** expected — Balanced removes both hotword enrollment packages. Reinstall `com.android.hotwordenrollment.okgoogle` and `com.android.hotwordenrollment.xgoogle` to get it back.
-
-*   **Mi Pay manager still installed:** `org.mipay.android.manager` is in no list — its removal failed on this device. Retry manually with `adb shell pm uninstall -k --user 0 org.mipay.android.manager` and check the output before adding it anywhere.
 ---
 
 ## Contributing

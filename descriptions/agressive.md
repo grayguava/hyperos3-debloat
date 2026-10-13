@@ -1,19 +1,21 @@
 # Agressive profile
 
-Detail file for `lists/agressive.txt` (51 packages = all 43 from `balanced.md` plus the 8 highest-tradeoff entries below). Do not apply without replacements for the dialer/SMS entries and without accepting the loss of theft protection and emergency SOS. All entries were removed for user 0 and confirmed absent on 2026-10-12, except where noted.
+Detail file for `lists/agressive.txt` (53 packages = all 44 from `balanced.md` plus the 9 highest-tradeoff entries below). Do not apply without replacements for the dialer/SMS entries and without accepting the loss of theft protection and emergency SOS.
 
 ## Included from Safe and Balanced (47)
 
-See `descriptions/safe.md` (33 no-tradeoff entries) and `descriptions/balanced.md` (10 tradeoff entries). They are all listed in `lists/agressive.txt`.
+See `descriptions/safe.md` (33 no-tradeoff entries) and `descriptions/balanced.md` (11 tradeoff entries). They are all listed in `lists/agressive.txt`.
 
-## Agressive extras (8) — highest tradeoff, apply last
+## Agressive extras (9) — highest tradeoff, apply last
 
 - AOSP Messaging
   - `com.android.mms`
   - Stock SMS app. Only remove with a replacement SMS app set as default (Google Messages holds the SMS role here).
+  - Recommended alternative: [Fossify Messages](https://www.fossify.org/apps/messages/)
 - Contacts and dialer
   - `com.android.contacts`
-  - Stock dialer + contacts UI. Only remove with a replacement; Google Dialer/Contacts in use, calling tested.
+  - Stock dialer + contacts UI. Only remove with a replacement ready.
+  - Recommended alternative: [Fossify Phone](https://www.fossify.org/apps/phone/) and [Fossify Contacts](https://www.fossify.org/apps/contacts/)
 - Xiaomi Find Device
   - `com.xiaomi.finddevice`
   - Theft protection (locate/lock/wipe). Delete at your own risk. Not function-tested after removal.
@@ -32,3 +34,6 @@ See `descriptions/safe.md` (33 no-tradeoff entries) and `descriptions/balanced.m
 - Mi Cloud backup
   - `com.miui.cloudbackup`
   - Mi Cloud full-device backup.
+- MIUI Theme Manager
+  - `com.android.thememanager`
+  - You may lose homescreen and lockscreen customisation features. No impact on usability at all. Wallpapers work fine if done through Gallery or a third-party app. To keep it but hide it from the launcher: Settings > Apps > three dots > Other settings > Manage home screen shortcuts > disable Theme Manager.

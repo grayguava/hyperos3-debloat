@@ -41,6 +41,7 @@ com.google.android.projection.gearhead
 com.miui.bugreport
 com.miui.player
 com.xiaomi.mipicks
+com.google.android.apps.maps
 com.android.mms
 com.android.contacts
 com.xiaomi.finddevice
@@ -49,3 +50,4 @@ com.miui.cloudservice
 com.xiaomi.micloud.sdk
 com.miui.micloudsync
 com.miui.cloudbackup
+com.android.thememanager

@@ -1,6 +1,6 @@
 # Safe profile
 
-Detail file for `lists/safe.txt` (33 packages). No replacement app needed and no known feature tradeoff. All entries were removed for user 0 and confirmed absent on 2026-10-12.
+Detail file for `lists/safe.txt` (33 packages). Low-risk removals: telemetry, bloat and standalone apps — nothing here breaks a system feature. Some are everyday apps you will naturally want a replacement for (browser, videos, music, gallery); those carry a recommended alternative below.
 
 - MIUI Analytics
   - `com.miui.analytics`
@@ -43,7 +43,8 @@ Detail file for `lists/safe.txt` (33 packages). No replacement app needed and no
   - MIUI downloads UI. `com.android.providers.downloads` itself stays.
 - Mi App Finder
   - `com.mi.appfinder`
-  - Launcher app-search provider.
+  - On-device search service (part of App Vault) that powers home-screen search and pulls in online suggestions (themes, videos, music). Holds broad permissions and hooks into the system ad provider.
+  - Removing it only loses the online suggestions. App-drawer search and the Settings app list keep working after a reboot.
 - Facebook App Manager
   - `com.facebook.appmanager`
   - Preinstalled Facebook updater/manager.
@@ -68,18 +69,22 @@ Detail file for `lists/safe.txt` (33 packages). No replacement app needed and no
 - Google Photos
   - `com.google.android.apps.photos`
   - Photos backup/gallery app.
+  - Recommended alternative: [Ente Photos](https://ente.com)
 - YouTube
   - `com.google.android.youtube`
   - YouTube app.
+  - Recommended alternative: [LibreTube](https://github.com/libre-tube/LibreTube) or [NewPipe](https://github.com/TeamNewPipe/NewPipe)
 - YouTube Music
   - `com.google.android.apps.youtube.music`
   - Music streaming app.
+  - Recommended alternative: [Metrolist](https://github.com/MetrolistGroup/Metrolist)
 - Google Gemini
   - `com.google.android.apps.bard`
   - Gemini AI app (formerly Bard).
 - Google Chrome
   - `com.android.chrome`
-  - Browser. Cromite (`org.cromite.cromite`) is the replacement here.
+  - Default Android browser.
+  - Recommended alternative: [Cromite](https://github.com/uazo/cromite)
 - Privacy Sandbox API
   - `com.google.android.adservices.api`
   - Ad Services API surface.
